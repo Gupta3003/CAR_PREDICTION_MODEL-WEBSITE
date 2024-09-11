@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Link to the CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/Login.css') }}">
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login" method="POST">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+
+            <div class="extras">
+                <label><input type="checkbox" name="remember"> Remember Me</label>
+                <a href="/reset_password">Forgot Password?</a>
+            </div>
+
+            <button type="submit">Login</button>
+        </form>
+        
+          <!-- Link to Registration Page -->
+          <p>Don't have an account? <a href="/register">Register here</a></p>
+
+        <!-- Display error message if any -->
+        {% if message %}
+        <p style="color: red;">{{ message }}</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

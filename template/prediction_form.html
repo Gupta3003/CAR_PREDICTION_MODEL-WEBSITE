@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Reselling Price Prediction</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/Result.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="/static/styles/index.css">-->
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-primary">Car Reselling Price Prediction</h1>
+        <form action="{{ url_for('predict')}}" method="post" class="mt-4 shadow p-4 rounded bg-light" id="predictionForm">
+            
+            <!-- Kilometers Driven -->
+            <div class="mb-3">
+                <label for="kilometers-driven" class="form-label">Kilometers Driven:</label>
+                <input type="number" class="form-control" id="kilometers-driven" name="kilometersDriven" min="0" max="500000" required>
+            </div>
+
+            <!-- Mileage -->
+            <div class="mb-3">
+                <label for="mileage" class="form-label">Mileage (km/l or km/kg):</label>
+                <input type="number" class="form-control" id="mileage" name="mileage" step="0.1" min="0" max="50" required>
+            </div>
+
+            <!-- Engine -->
+            <div class="mb-3">
+                <label for="engine" class="form-label">Engine (CC):</label>
+                <input type="number" class="form-control" id="engine" name="engine" min="500" max="5000" required>
+            </div>
+
+            <!-- Power -->
+            <div class="mb-3">
+                <label for="power" class="form-label">Power (bhp):</label>
+                <input type="number" class="form-control" id="power" name="power" step="0.1" min="20" max="500" required>
+            </div>
+
+            <!-- Age of Car -->
+            <div class="mb-3">
+                <label for="age-of-car" class="form-label">Age of Car:</label>
+                <input type="number" class="form-control" id="age-of-car" name="ageOfCar" min="0" max="30" required>
+            </div>
+
+            <!-- Seats -->
+            <div class="mb-3">
+                <label for="seats" class="form-label">Seats:</label>
+                <input type="number" class="form-control" id="seats" name="seats" min="2" max="10" required>
+            </div>
+
+            <!-- Location -->
+            <div class="mb-3">
+                <label for="location" class="form-label">Location:</label>
+                <select id="location" class="form-select" name="location" required>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Coimbatore">Coimbatore</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Hyderabad">Hyderabad</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Kochi">Kochi</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Pune">Pune</option>
+                    <!-- Add the other cities as required -->
+                </select>
+            </div>
+
+            <!-- Fuel Type -->
+            <div class="mb-3">
+                <label for="fuel-type" class="form-label">Fuel Type:</label>
+                <select id="fuel-type" class="form-select" name="fuelType" required>
+                    <option value="Diesel">Diesel</option>
+                    <option value="Electric">Electric</option>
+                    <option value="LPG">LPG</option>
+                    <option value="Petrol">Petrol</option>
+                </select>
+            </div>
+
+            <!-- Transmission -->
+            <div class="mb-3">
+                <label for="transmission" class="form-label">Transmission:</label>
+                <select id="transmission" class="form-select" name="transmission" required>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+            </div>
+
+            <!-- Owner Type -->
+            <div class="mb-3">
+                <label for="owner-type" class="form-label">Owner Type:</label>
+                <select id="owner-type" class="form-select" name="ownerType" required>
+                    <option value="Second">Second</option>
+                    <option value="Third">Third</option>
+                    <option value="Fourth & Above">Fourth & Above</option>
+                </select>
+            </div>
+
+            <!-- Brand -->
+            <div class="mb-3">
+                <label for="brand" class="form-label">Brand:</label>
+                <select id="brand" class="form-select" name="brand" required>
+                    <option value="Audi">Audi</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Bentley">Bentley</option>
+                    <option value="Chevrolet">Chevrolet</option>
+                    <option value="Datsun">Datsun</option>
+                    <option value="Fiat">Fiat</option>
+                    <option value="Force">Force</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Isuzu">Isuzu</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Lamborghini">Lamborghini</option>
+                    <option value="Land Rover">Land Rover</option>
+                    <option value="Mahindra">Mahindra</option>
+                    <option value="Maruti">Maruti</option>
+                    <option value="Mercedes-Benz">Mercedes-Benz</option>
+                    <option value="Mini Cooper">Mini Cooper</option>
+                    <option value="Mitsubishi">Mitsubishi</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Porsche">Porsche</option>
+                    <option value="Renault">Renault</option>
+                    <option value="Skoda">Skoda</option>
+                    <option value="Smart">Smart</option>
+                    <option value="Tata">Tata</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volkswagen">Volkswagen</option>
+                    <option value="Volvo">Volvo</option>
+                
+                </select>
+            </div>
+
+            <!-- Class of Brand -->
+            <div class="mb-3">
+                <label for="class-of-brand" class="form-label">Class of Brand:</label>
+                <select id="class-of-brand" class="form-select" name="classOfBrand" required>
+                    <option value="Low_class">Low Class</option>
+                    <option value="Mid_class">Mid Class</option>
+                    <option value="High_class">High Class</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100">Predict Price</button>
+
+            <!-- Prediction Result -->
+            <h3 id="score" class="mt-4 text-center">{{ prediction_text }}</h3>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

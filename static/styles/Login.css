@@ -1,0 +1,90 @@
+/* Basic reset for cross-browser consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Style the body and full-screen background */
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('LoginImage.jpg') no-repeat center center fixed; /* Use a night-themed background */
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Transparent login box in the center */
+.login-container {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Add some blur for a frosted glass effect */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    width: 350px;
+    color: white;
+}
+
+/* Form title styling */
+.login-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+/* Styling the form inputs */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent input fields */
+    color: white;
+}
+
+/* Placeholder text color */
+.login-container input::placeholder {
+    color: #ddd;
+}
+
+/* Submit button styling */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #45a049;
+}
+
+/* Additional link and text styles */
+.login-container a {
+    color: #f0f0f0;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+/* "Remember me" and "Forgot password" */
+.login-container .extras {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+    font-size: 12px;
+}

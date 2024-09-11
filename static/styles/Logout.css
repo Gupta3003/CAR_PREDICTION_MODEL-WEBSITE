@@ -1,0 +1,15 @@
+/* Home.css */
+
+.logout-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff4d4d; /* Red background for visibility */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.logout-button:hover {
+    background-color: #ff0000; /* Darker red on hover */
+}

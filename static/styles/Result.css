@@ -1,0 +1,31 @@
+body {
+    background-image: url(/static/styles/Background.jpg);
+    background-size: cover; /* Ensures the image covers the whole background */
+    background-position: center; /* Centers the background image */
+    background-attachment: fixed; /* Keeps the background fixed while scrolling */
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Slight transparency to make the background image visible */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #007bff;
+}
+
+form {
+    padding: 20px;
+}
+
+button {
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

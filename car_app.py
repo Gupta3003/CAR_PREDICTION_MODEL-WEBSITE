@@ -150,6 +150,13 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('login'))
 
+@app.route('/profile')
+def profile():
+    if 'logged_in' in session:
+        user = User.query.get(session['user_id'])
+        return render_template('profile.html', username=user.username, email=user.email, password=user.password)
+    return redirect(url_for('login'))
+
 # Success page route
 @app.route('/success')
 def success():
@@ -245,7 +252,7 @@ def predict():
             prediction = model.predict(input_data)
             final_price = prediction[0]
 
-            return render_template('prediction_form.html', prediction_text=f'The predicted resale price of the car is ₹{0.1*final_price:.2f} Lakhs')
+            return render_template('prediction_form.html', prediction_text=f'The predicted resale price of the car is ₹{final_price:.2f} Lakhs')
         except Exception as e:
             logging.error("An error occurred during prediction: %s", e)
             return render_template('prediction_form.html', prediction_text=f'Error: {str(e)}')

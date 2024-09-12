@@ -10,6 +10,18 @@
     <!-- <link rel="stylesheet" type="text/css" href="/static/styles/index.css">-->
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <header>
+        <div class="navbar">
+            <h1 class="logo">CAR PRICES</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/logout">Logout</a><li>
+                </ul>
+            </nav>
+        </div>
+
     <div class="container mt-5">
         <h1 class="text-center text-primary">Car Reselling Price Prediction</h1>
         <form action="{{ url_for('predict')}}" method="post" class="mt-4 shadow p-4 rounded bg-light" id="predictionForm">

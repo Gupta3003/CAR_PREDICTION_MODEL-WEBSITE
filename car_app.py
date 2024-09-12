@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, session
 import pandas as pd
 import pickle
 from flask_cors import cross_origin
 import logging
 from flask_sqlalchemy import SQLAlchemy
+from datetime import timedelta
 
 app = Flask(__name__, template_folder='template')
 
@@ -17,6 +18,10 @@ db = SQLAlchemy(app)
 
 # Set up logging
 logging.basicConfig(level=logging.DEBUG)
+
+# Session configuration
+app.secret_key = 'your_secret_key'  # Replace with a strong secret key
+app.permanent_session_lifetime = timedelta(days=30)  # Session duration
 
 # Create a User model for the database
 class User(db.Model):
@@ -59,10 +64,12 @@ def login():
         
         # Query the database for the user
         user = User.query.filter_by(username=username).first()
-        
-        # Check if user exists and the password matches
+
         if user and user.password == password:
-            return render_template('success.html', message="Registration ID Done")
+            session['logged_in'] = True
+            session['user_id'] = user.id
+
+            return render_template('prediction_form.html')
         else:
             return render_template('login.html', message="Invalid credentials. Please try again.")
     
@@ -137,6 +144,12 @@ def update_password(user_id):
 
     return render_template('update_password.html')
 
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
+
 # Success page route
 @app.route('/success')
 def success():
@@ -155,7 +168,9 @@ def register_success():
 # Prediction form page route
 @app.route('/prediction', methods=['GET'])
 def prediction_form():
-    return render_template('prediction_form.html')
+    if 'logged_in' in session:
+        return render_template('prediction_form.html')
+    return render_template('Login.html')
 
 # Prediction page route
 @app.route('/predict', methods=['POST'])

@@ -5,7 +5,6 @@ from flask_cors import cross_origin
 import logging
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
-from flask_migrate import Migrate
 
 app = Flask(__name__, template_folder='template')
 
@@ -36,10 +35,8 @@ class User(db.Model):
 
 # Initialize the database schema (create tables)
 with app.app_context():
-    db.drop_all()  # Drops all the tables
     db.create_all()  # Creates all the tables with the new schema
 
-migrate = Migrate(app, db)
 
 # Load the trained model
 model_path = 'car_price_prediction_model.pkl'

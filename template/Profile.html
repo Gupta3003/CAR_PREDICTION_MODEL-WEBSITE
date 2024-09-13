@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #1e1e2e;
+            color: white;
+            padding: 10px 20px;
+            text-align: right;
+            position: relative;
+        }
+        .profile-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            min-width: 160px;
+            right: 0;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .profile-section {
+            margin: 50px auto;
+            max-width: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        .profile-section h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .profile-details {
+            list-style-type: none;
+            padding: 0;
+        }
+        .profile-details li {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        .profile-details span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <!-- Profile logo and dropdown -->
+        <div class="dropdown">
+            <img src="/static/images/logo.jpg" alt="Profile" class="profile-logo">
+            <span>▼</span>
+            <div class="dropdown-content">
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-section">
+        <h2>User Profile</h2>
+        <ul class="profile-details">
+            <li><span>Username:</span> {{ username }}</li>
+            <li><span>Email:</span> {{ email }}</li>
+            <li><span>Password:</span> {{ password }}</li>
+        </ul>
+    </div>
+
+</body>
+</html>

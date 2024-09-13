@@ -5,6 +5,7 @@ from flask_cors import cross_origin
 import logging
 from flask_sqlalchemy import SQLAlchemy
 from datetime import timedelta
+from flask_migrate import Migrate
 
 app = Flask(__name__, template_folder='template')
 
@@ -29,13 +30,16 @@ class User(db.Model):
     username = db.Column(db.String(80), nullable=False, unique=True)
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(200), nullable=False)
-
+    
     def __repr__(self):
         return f"<User {self.username}>"
 
 # Initialize the database schema (create tables)
 with app.app_context():
-    db.create_all()
+    db.drop_all()  # Drops all the tables
+    db.create_all()  # Creates all the tables with the new schema
+
+migrate = Migrate(app, db)
 
 # Load the trained model
 model_path = 'car_price_prediction_model.pkl'
@@ -64,11 +68,11 @@ def login():
         
         # Query the database for the user
         user = User.query.filter_by(username=username).first()
-
+        
         if user and user.password == password:
             session['logged_in'] = True
             session['user_id'] = user.id
-
+            
             return render_template('prediction_form.html')
         else:
             return render_template('login.html', message="Invalid credentials. Please try again.")
@@ -156,6 +160,7 @@ def profile():
         user = User.query.get(session['user_id'])
         return render_template('profile.html', username=user.username, email=user.email, password=user.password)
     return redirect(url_for('login'))
+
 
 # Success page route
 @app.route('/success')
@@ -252,7 +257,7 @@ def predict():
             prediction = model.predict(input_data)
             final_price = prediction[0]
 
-            return render_template('prediction_form.html', prediction_text=f'The predicted resale price of the car is ₹{final_price:.2f} Lakhs')
+            return render_template('prediction_form.html', prediction_text=f'The predicted resale price of the car is ₹{0.1*final_price:.2f} Lakhs')
         except Exception as e:
             logging.error("An error occurred during prediction: %s", e)
             return render_template('prediction_form.html', prediction_text=f'Error: {str(e)}')
@@ -261,3 +266,4 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True)
+

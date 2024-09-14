@@ -10,7 +10,7 @@ The Car Prediction Model is a machine learning project designed to predict car p
 ![Screenshot (426)](https://github.com/user-attachments/assets/381ed1a7-d623-4198-88bc-97e7926ceeef)
 ![Screenshot (427)](https://github.com/user-attachments/assets/2e85f86a-8624-4964-8240-21cae1431964)
 
-## Working og Model
+## Working of a Model
 https://github.com/user-attachments/assets/3cdc2215-f444-4914-897d-885d94a77ccd
 
 

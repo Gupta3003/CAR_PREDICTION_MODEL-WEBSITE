@@ -4,11 +4,14 @@
 
 The Car Prediction Model is a machine learning project designed to predict car prices based on various features. By leveraging data such as mileage, engine size, and more, this model provides accurate price estimates, assisting buyers and sellers in making informed decisions. A web application has been developed using Flask to make the model accessible to users.
 
-##Website User Interface
+## Website User Interface
 ![Screenshot (424)](https://github.com/user-attachments/assets/fb41bab1-1127-4b9a-809d-2817b3688094)
 ![Screenshot (425)](https://github.com/user-attachments/assets/eefa978a-eac3-4d18-a879-c1fd4b550b5b)
 ![Screenshot (426)](https://github.com/user-attachments/assets/381ed1a7-d623-4198-88bc-97e7926ceeef)
 ![Screenshot (427)](https://github.com/user-attachments/assets/2e85f86a-8624-4964-8240-21cae1431964)
+
+## Working og Model
+https://github.com/user-attachments/assets/3cdc2215-f444-4914-897d-885d94a77ccd
 
 
 ## Machine Learning

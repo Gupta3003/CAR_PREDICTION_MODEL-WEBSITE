@@ -186,7 +186,7 @@ nbconvert @ file:///C:/ci/nbconvert_1649741016669/work
 nbformat @ file:///C:/ci/nbformat_1649845125000/work
 nest-asyncio @ file:///C:/ci/nest-asyncio_1649829929390/work
 networkx @ file:///opt/conda/conda-bld/networkx_1647437648384/work
-nltk==3.8.1
+nltk==3.9
 nose @ file:///opt/conda/conda-bld/nose_1642704612149/work
 notebook @ file:///C:/ci/notebook_1645002729033/work
 numba @ file:///C:/ci/numba_1650394399948/work

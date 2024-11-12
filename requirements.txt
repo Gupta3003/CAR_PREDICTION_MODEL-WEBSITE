@@ -86,7 +86,7 @@ fastjsonschema @ file:///tmp/build/80754af9/python-fastjsonschema_1620414857593/
 filelock==3.14.0
 flake8 @ file:///tmp/build/80754af9/flake8_1620776156532/work
 Flask==3.0.3
-Flask-Cors==4.0.1
+Flask-Cors==4.0.2
 Flask-Migrate==4.0.7
 Flask-SQLAlchemy==3.1.1
 fonttools==4.25.0
